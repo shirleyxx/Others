@@ -3,11 +3,12 @@ import os
 import argparse
 
 def timing(my_function):
-    def wrapper():
+    def wrapper(*args, **kwargs):
         t1 = time.time()
-        my_function()
+        result = my_function(*args, **kwargs)
         t2 = time.time()
         print('\n{} takes {:.4f} s'.format(my_function.__name__, t2 - t1))
+        return result
     return wrapper
 
 def full_path(path):
